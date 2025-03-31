@@ -1,0 +1,1412 @@
+{
+	"info": {
+		"_postman_id": "e2a6cd9d-31ff-4288-88b4-75359af6b06e",
+		"name": "wo2-demo-api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30110759"
+	},
+	"item": [
+		{
+			"name": "Backend",
+			"item": [
+				{
+					"name": "Create Customer",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"first_name\":\"Don\",\r\n    \"last_name\":\"Jon\",\r\n    \"email\":\"nelson@example.com\",\r\n    \"phone_number\":\"0726076263\",\r\n    \"address\":\"Kololo\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/createCustomer",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"createCustomer"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Duplicate",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"first_name\":\"Don\",\r\n    \"last_name\":\"Jon\",\r\n    \"email\":\"jon@example.com\",\r\n    \"phone_number\":\"0726076261\",\r\n    \"address\":\"Kololo\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}/createCustomer",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"createCustomer"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 17 Dec 2024 11:45:29 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"code\": 400,\n    \"message\": \"Customer with email or phone number already exist\"\n}"
+						},
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"first_name\":\"Don\",\r\n    \"last_name\":\"Jon\",\r\n    \"email\":\"don@example.com\",\r\n    \"phone_number\":\"0726076260\",\r\n    \"address\":\"Kololo\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}/createCustomer",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"createCustomer"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 17 Dec 2024 11:45:55 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"address\": \"Kololo\",\n    \"created_at\": \"2024-12-17T11:45:55.824+00:00\",\n    \"email\": \"don@example.com\",\n    \"firstName\": \"Don\",\n    \"id\": 2,\n    \"lastName\": \"Jon\",\n    \"phoneNumber\": \"0726076260\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Create Account",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"currency\": \"UGX\",\r\n    \"customer_email\": \"nelson@example.com\",\r\n    \"account_title\": \"Sacco\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/createAccount",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"createAccount"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Invalid currency",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"currency\": \"UGB\",\r\n    \"customer_email\": \"jon@example.com\",\r\n    \"account_title\": \"Sacco\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}/createAccount",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"createAccount"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 17 Dec 2024 11:46:25 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"code\": 400,\n    \"message\": \"No enum constant org.nelly.wso2demoapi.models.enums.Currency.UGB\"\n}"
+						},
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"currency\": \"UGX\",\r\n    \"customer_email\": \"jon@example.com\",\r\n    \"account_title\": \"Sacco\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}/createAccount",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"createAccount"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 17 Dec 2024 11:46:54 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"accountCurrency\": \"UGX\",\n    \"accountNumber\": 21417344360142,\n    \"accountStatus\": \"INACTIVE\",\n    \"accountTitle\": \"Sacco\",\n    \"balance\": 0,\n    \"customerName\": \"Don Jon\",\n    \"id\": 3,\n    \"maskedAccountNumber\": \"******44360142\"\n}"
+						},
+						{
+							"name": "Invalid Email",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"currency\": \"UGX\",\r\n    \"customer_email\": \"jon@examfdghple.com\",\r\n    \"account_title\": \"Sacco\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}/createAccount",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"createAccount"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 17 Dec 2024 11:47:05 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"code\": 400,\n    \"message\": \"Invalid user email\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Activate Account",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"account_number\": \"21417345019929\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/activateAccount",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"activateAccount"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Account Already Active",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"account_number\": \"21417344337766\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}/activateAccount",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"activateAccount"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 17 Dec 2024 11:47:25 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"code\": 400,\n    \"message\": \"Account is already active\"\n}"
+						},
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"account_number\": \"21417344360142\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}/activateAccount",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"activateAccount"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 17 Dec 2024 11:51:14 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Account activated successfully\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Deposit",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"account_number\": \"21417345019929\",\r\n    \"amount\": \"10000\",\r\n    \"depositor_name\": \"Jon Doe\",\r\n    \"depositor_phone\": \"0726076260\",\r\n    \"transaction_narration\":\"Initial deposit\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/deposit",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"deposit"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Account inactive",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"account_number\": \"21417344360142\",\r\n    \"amount\": \"50000\",\r\n    \"depositor_name\": \"Jon Doe\",\r\n    \"depositor_phone\": \"0726076260\",\r\n    \"transaction_narration\":\"Initial deposit\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}/deposit",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"deposit"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 17 Dec 2024 11:50:39 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"code\": 400,\n    \"message\": \"Account hasn't been activated yet\"\n}"
+						},
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"account_number\": \"21417344337766\",\r\n    \"amount\": \"50000\",\r\n    \"depositor_name\": \"Jon Doe\",\r\n    \"depositor_phone\": \"0726076260\",\r\n    \"transaction_narration\":\"Initial deposit\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}/deposit",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"deposit"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 17 Dec 2024 11:50:58 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"deposited 50000 on account: 21417344337766\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Account Details",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"account_number\": \"21417345019929\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/accountDetails",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"accountDetails"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"account_number\": \"21417344337766\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}/accountDetails",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"accountDetails"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 17 Dec 2024 11:49:48 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"accountCurrency\": \"UGX\",\n    \"accountNumber\": 21417344337766,\n    \"accountStatus\": \"ACTIVE\",\n    \"accountTitle\": \"Sacco\",\n    \"balance\": 72000,\n    \"customerName\": \"Don Jon\",\n    \"id\": 2,\n    \"maskedAccountNumber\": \"******44337766\"\n}"
+						},
+						{
+							"name": "Invalid Account number",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"account_number\": \"214173444337766\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}/accountDetails",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"accountDetails"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 17 Dec 2024 11:50:05 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"code\": 400,\n    \"message\": \"Invalid account number\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Ministatement",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"account_number\": \"21417345019929\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/ministatement",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"ministatement"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"account_number\": \"21417344337766\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}/ministatement",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"ministatement"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 17 Dec 2024 11:49:03 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"accountNumber\": 21417344337766,\n        \"creditAmount\": 10000,\n        \"depositorName\": \"Jon Doe\",\n        \"depositorPhoneNumber\": \"0726076260\",\n        \"externalTranRefNum\": \"TXN-F06D6A83B75C\",\n        \"id\": 5,\n        \"transactionCurrency\": \"UGX\",\n        \"transactionDateTime\": \"2024-12-17 14:33:51.655634\",\n        \"transactionNarration\": \"Fund Transfer\",\n        \"transactionType\": \"CREDIT\"\n    },\n    {\n        \"accountNumber\": 21417344337766,\n        \"creditAmount\": 10000,\n        \"depositorName\": \"Jon Doe\",\n        \"depositorPhoneNumber\": \"0726076260\",\n        \"externalTranRefNum\": \"TXN-859B4513EBD5\",\n        \"id\": 7,\n        \"transactionCurrency\": \"UGX\",\n        \"transactionDateTime\": \"2024-12-17 14:37:35.377617\",\n        \"transactionNarration\": \"Fund Transfer\",\n        \"transactionType\": \"CREDIT\"\n    },\n    {\n        \"accountNumber\": 21417344337766,\n        \"creditAmount\": 1000,\n        \"depositorName\": \"Jon Doe\",\n        \"depositorPhoneNumber\": \"0726076260\",\n        \"externalTranRefNum\": \"TXN-EA463C534D50\",\n        \"id\": 9,\n        \"transactionCurrency\": \"UGX\",\n        \"transactionDateTime\": \"2024-12-17 14:38:13.944022\",\n        \"transactionNarration\": \"Fund Transfer\",\n        \"transactionType\": \"CREDIT\"\n    },\n    {\n        \"accountNumber\": 21417344337766,\n        \"creditAmount\": 50000,\n        \"depositorName\": \"Jon Doe\",\n        \"depositorPhoneNumber\": \"0726076260\",\n        \"externalTranRefNum\": \"TXN-D067FCBCC7D9\",\n        \"id\": 12,\n        \"transactionCurrency\": \"UGX\",\n        \"transactionDateTime\": \"2024-12-17 14:39:29.433434\",\n        \"transactionNarration\": \"Initial deposit\",\n        \"transactionType\": \"CREDIT\"\n    },\n    {\n        \"accountNumber\": 21417344337766,\n        \"creditAmount\": 1000,\n        \"depositorName\": \"Jon Doe\",\n        \"depositorPhoneNumber\": \"0726076260\",\n        \"externalTranRefNum\": \"TXN-0DF7C5ADFE18\",\n        \"id\": 13,\n        \"transactionCurrency\": \"UGX\",\n        \"transactionDateTime\": \"2024-12-17 14:48:48.762920\",\n        \"transactionNarration\": \"Fund Transfer\",\n        \"transactionType\": \"CREDIT\"\n    }\n]"
+						},
+						{
+							"name": "Invalid account number",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"account_number\": \"234123\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}/ministatement",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"ministatement"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 17 Dec 2024 11:49:23 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"code\": 400,\n    \"message\": \"Invalid account number\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Transfer",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"src_acc_number\": \"21417344337487\",\r\n    \"dest_acc_number\": \"pb21417345019929\",\r\n    \"amount\": \"200000\",\r\n    \"depositor_name\": \"Jon Doe\",\r\n    \"depositor_phone\": \"0726076260\",\r\n    \"transaction_narration\": \"Fund Transfer\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/transfer",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"transfer"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Inactive account",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"src_acc_number\": \"21417344337487\",\r\n    \"dest_acc_number\": \"21417344360142\",\r\n    \"amount\": \"1000\",\r\n    \"depositor_name\": \"Jon Doe\",\r\n    \"depositor_phone\": \"0726076260\",\r\n    \"transaction_narration\": \"Fund Transfer\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}/transfer",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"transfer"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 17 Dec 2024 11:48:14 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"code\": 400,\n    \"message\": \"Destination account hasn't been activated yet\"\n}"
+						},
+						{
+							"name": "Insufficient funds",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"src_acc_number\": \"21417344337487\",\r\n    \"dest_acc_number\": \"21417344337766\",\r\n    \"amount\": \"100000000\",\r\n    \"depositor_name\": \"Jon Doe\",\r\n    \"depositor_phone\": \"0726076260\",\r\n    \"transaction_narration\": \"Fund Transfer\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}/transfer",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"transfer"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 17 Dec 2024 11:48:32 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"code\": 400,\n    \"message\": \"Insufficient funds\"\n}"
+						},
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"src_acc_number\": \"21417344337487\",\r\n    \"dest_acc_number\": \"21417344337766\",\r\n    \"amount\": \"1000\",\r\n    \"depositor_name\": \"Jon Doe\",\r\n    \"depositor_phone\": \"0726076260\",\r\n    \"transaction_narration\": \"Fund Transfer\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}/transfer",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"transfer"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 17 Dec 2024 11:48:48 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Transfer of 1000 from 21417344337487 to 21417344337766 was successful\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Account list",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"src_acc_number\": \"\",\r\n    \"dest_acc_number\": \"\",\r\n    \"amount\": \"10000\",\r\n    \"depositor_name\": \"Jon Doe\",\r\n    \"depositor_phone\": \"0726076260\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/accounts",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"accounts"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"src_acc_number\": \"\",\r\n    \"dest_acc_number\": \"\",\r\n    \"amount\": \"10000\",\r\n    \"depositor_name\": \"Jon Doe\",\r\n    \"depositor_phone\": \"0726076260\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}/accounts",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"accounts"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 17 Dec 2024 11:47:45 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"accountCurrency\": \"UGX\",\n        \"accountNumber\": 21417344337487,\n        \"accountStatus\": \"ACTIVE\",\n        \"accountTitle\": \"Sacco\",\n        \"balance\": 895600.5,\n        \"customerName\": \"Don Jon\",\n        \"id\": 1,\n        \"maskedAccountNumber\": \"******44337487\"\n    },\n    {\n        \"accountCurrency\": \"UGX\",\n        \"accountNumber\": 21417344337766,\n        \"accountStatus\": \"ACTIVE\",\n        \"accountTitle\": \"Sacco\",\n        \"balance\": 71000,\n        \"customerName\": \"Don Jon\",\n        \"id\": 2,\n        \"maskedAccountNumber\": \"******44337766\"\n    },\n    {\n        \"accountCurrency\": \"UGX\",\n        \"accountNumber\": 21417344360142,\n        \"accountStatus\": \"INACTIVE\",\n        \"accountTitle\": \"Sacco\",\n        \"balance\": 0,\n        \"customerName\": \"Don Jon\",\n        \"id\": 3,\n        \"maskedAccountNumber\": \"******44360142\"\n    }\n]"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "wso2mi",
+			"item": [
+				{
+					"name": "Onboarding Customer",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"first_name\": \"Don\",\r\n    \"last_name\": \"Jon\",\r\n    \"email\": \"nelly53@example.com\",\r\n    \"phone_number\": \"0726076253\",\r\n    \"address\": \"Kololo\",\r\n    //\r\n    \"currency\": \"UGX\",\r\n    \"account_title\": \"Sacco\",\r\n    //\r\n    \"amount\": \"10000\",\r\n    \"depositor_name\": \"Jon Doe\",\r\n    \"depositor_phone\": \"0726076260\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8290/BankApi/onboard",
+							"host": [
+								"localhost"
+							],
+							"port": "8290",
+							"path": [
+								"BankApi",
+								"onboard"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Accounts List",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8290/BankApi/accounts",
+							"host": [
+								"localhost"
+							],
+							"port": "8290",
+							"path": [
+								"BankApi",
+								"accounts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Ping",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"msg\": \"Hello world\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8290/BankApi/ping",
+							"host": [
+								"localhost"
+							],
+							"port": "8290",
+							"path": [
+								"BankApi",
+								"ping"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Hello world Api",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"patient\": {\r\n        \"name\": \"John Doe\",\r\n        \"dob\": \"1940-03-19\",\r\n        \"ssn\": \"234-23-525\",\r\n        \"address\": \"California\",\r\n        \"phone\": \"8770586755\",\r\n        \"email\": \"johndoe@gmail.com\"\r\n    },\r\n    \"doctor\": \"thomas collins\",\r\n    \"hospital_id\": \"grandoaks\",\r\n    \"hospital\": \"grand oak community hospital\",\r\n    \"appointment_date\": \"2025-04-02\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8290/healthcare/categories/surgery/reserve",
+							"host": [
+								"localhost"
+							],
+							"port": "8290",
+							"path": [
+								"healthcare",
+								"categories",
+								"surgery",
+								"reserve"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Header based",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true
+						}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "CustomHeader",
+								"value": "text/xml",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "CustomHeader",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\">\r\n    <soapenv:Header/>\r\n    <soapenv:Body>\r\n        <ser:getQuote xmlns:ser=\"http://services.samples\" xmlns:xsd=\"http://services.samples/xsd\">\r\n            <ser:request>\r\n                <xsd:symbol>IBM</xsd:symbol>\r\n            </ser:request>\r\n        </ser:getQuote>\r\n    </soapenv:Body>\r\n</soapenv:Envelope>",
+							"options": {
+								"raw": {
+									"language": "xml"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8290/services/HeaderBasedRoutingProxy",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8290",
+							"path": [
+								"services",
+								"HeaderBasedRoutingProxy"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Message transformation",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.variables.set(\"category\",\"surgery\");"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"John Doe\",\r\n    \"dob\": \"1990-03-19\",\r\n    \"ssn\": \"234-23-525\",\r\n    \"address\": \"California\",\r\n    \"phone\": \"8770586755\",\r\n    \"email\": \"johndoe@gmail.com\",\r\n    \"doctor\": \"thomas collins\",\r\n    \"hospital_id\": \"grandoaks\",\r\n    \"hospital\": \"grand oak community hospital\",\r\n    \"cardNo\": \"7844481124110331\",\r\n    \"appointment_date\": \"2025-04-02\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8290/healthcare/categories/{{category}}/reserve",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8290",
+							"path": [
+								"healthcare",
+								"categories",
+								"{{category}}",
+								"reserve"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Msg transf payload",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "SoapAction",
+								"value": "urn:placeOrder",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"placeOrder\": {\r\n        \"order\": {\r\n            \"symbol\": \"IBM\",\r\n            \"price\": \"3.141593E0\",\r\n            \"quantity\": \"4\"\r\n        }\r\n    }\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8290/stockorder_api",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8290",
+							"path": [
+								"stockorder_api"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Msg transf xc",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "SoapAction",
+								"value": "urn:getQuote",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"getQuote\": {\r\n        \"request\": {\r\n            \"symbol\": \"IBM\"\r\n        }\r\n    }\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8290/stockorder_api2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8290",
+							"path": [
+								"stockorder_api2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Several Service",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"patient\": {\r\n        \"name\": \"John Doe\",\r\n        \"dob\": \"1940-03-19\",\r\n        \"ssn\": \"234-23-525\",\r\n        \"address\": \"California\",\r\n        \"phone\": \"8770586755\",\r\n        \"email\": \"johndoe@gmail.com\",\r\n        \"cardNo\": \"7844481124110331\"\r\n    },\r\n    \"doctor\": \"thomas collins\",\r\n    \"hospital_id\": \"grandoaks\",\r\n    \"hospital\": \"grand oak community hospital\",\r\n    \"appointment_date\": \"2025-04-02\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8290/healthcare/categories/surgery/reserve",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8290",
+							"path": [
+								"healthcare",
+								"categories",
+								"surgery",
+								"reserve"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "URL",
+			"value": "localhost:8080",
+			"type": "default"
+		}
+	]
+}
